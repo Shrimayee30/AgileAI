@@ -1,0 +1,179 @@
+AgileAI Web Application Template (Strict Scope Version)
+
+Purpose:
+This template guides the model to transform a project description document (e.g., PDF or extracted text) for a web application into a structured Agile output consisting of:
+- Epic
+- Features
+- User Stories
+
+It enforces strict grounding: all output must be traceable to the input. No hallucination, inference, or generic filler is allowed.
+
+INPUT SPECIFICATION
+
+Input Type:
+- A single project description document (PDF or extracted text)
+
+Required Content in Input:
+- Project name or goal
+- List of pages or modules to be built
+- Functional requirements for each page
+- Technologies or integrations (e.g., payment gateway, admin panel)
+- User roles or interactions (optional)
+
+Strict Input Rules:
+- The input must be treated as the sole source of truth
+- Only generate output elements that are explicitly described in the input
+- Do not infer or invent components, pages, or tasks
+
+OUTPUT SPECIFICATION
+
+Output Format:
+Plain text structured as follows:
+
+Epic:
+[Name of the web application — must be explicitly stated or clearly implied in the input]
+
+Features:
+[List of pages or modules — only those explicitly mentioned in the input]
+
+User Stories:
+[For each feature, list small, achievable development tasks. These should reflect real implementation work and be phrased as sprint-ready titles.]
+
+Feature: [Feature Name] (Child of Epic)
+- Create the header for [Feature Name] (Child of Feature)
+- Add the footer for [Feature Name] (Child of Feature)
+- Build the body layout for [Feature Name] (Child of Feature)
+- Add sidebar navigation to [Feature Name] (only if sidebar is mentioned)
+- Add internal links to [Feature Name] (only if links are mentioned)
+- Connect [Feature Name] to database (only if data storage is mentioned)
+- Add form validation to [Feature Name] (only if forms are mentioned)
+- Integrate [specific component] into [Feature Name] (only if mentioned)
+
+DEFINITIONS
+
+Epic:
+- A concise, high-level title that summarizes the overall goal of the project
+- Must reflect the main deliverable or purpose
+- Example: E-Commerce Website for Fashion Retail, Online Learning Portal
+
+Feature:
+- A distinct page or module of the web application
+- Must be explicitly mentioned in the input
+- Each Feature is a child of the Epic
+- Examples: Home Page, Login/Register Page, Product Catalog, Checkout Page, Admin Dashboard
+
+User Story:
+- A small, actionable development task tied to a specific feature
+- Must be grounded in the input document
+- Each User Story is a child of a Feature
+- Should be phrased as a sprint-ready title (imperative, implementation-focused)
+- Avoid persona-based phrasing (e.g., “As a user…”)
+- Examples: Create the header for Home Page, Build the body layout for Checkout Page, Connect Product Catalog Page to database
+
+CONSTRAINTS
+
+- Strict grounding: Every Epic, Feature, and User Story must be traceable to the input document
+- No hallucination: Do not invent or infer any components, pages, modules, or tasks
+- No generic filler: Avoid adding default elements like “Settings Page” or “Search Bar” unless explicitly mentioned
+- Domain-aware phrasing: Use task formats appropriate to web development (e.g., “Create header”, “Connect to database”)
+
+SAMPLE TRAINING EXAMPLE
+
+### Input:
+Project Description:
+This project describes the design and implementation of an e-commerce website for fashion and lifestyle products (currently men's wear). Users can browse products, register, log in, add items to a shopping cart, and complete purchases using PayPal or Cash on Delivery. The site includes pages for Home, Clothing (Products), Order Us, Contact Us, About Us, Track (Admin), Register, Login, Admin Dashboard, Order View, Payment (PayPal), Success, and Failure. Technologies used include ASP.NET, C#.NET, SQL Server 2008, and ADO.NET. The system supports three roles: Visitor, User, and Admin. Admins can manage products, users, and orders.
+
+### Output:
+Epic:
+Online Shopping Web Application
+
+Features:
+- Home Page
+- Clothing Page
+- Order Us Page
+- Contact Us Page
+- About Us Page
+- Track Page (Admin)
+- Register Page
+- Login Page
+- Admin Dashboard
+- Order View Page
+- PayPal Payment Page
+- Success Page
+- Failed Page
+
+User Stories:
+
+Feature: Home Page (Child of Epic)
+- Create the header for Home Page (Child of Feature)
+- Add the footer for Home Page (Child of Feature)
+- Build the body layout to display welcome message and navigation links (Child of Feature)
+- Add navigation links to Clothing, Order Us, Contact Us, About Us, and Track pages (Child of Feature)
+
+Feature: Clothing Page (Child of Epic)
+- Create the header for Clothing Page (Child of Feature)
+- Add the footer for Clothing Page (Child of Feature)
+- Build the body layout to display product grid with name, price, and description (Child of Feature)
+- Connect Clothing Page to product database for dynamic listing (Child of Feature)
+
+Feature: Order Us Page (Child of Epic)
+- Create the header for Order Us Page (Child of Feature)
+- Add the footer for Order Us Page (Child of Feature)
+- Build the body layout with quantity selectors and order buttons (Child of Feature)
+- Connect Order Us Page to order database for submission (Child of Feature)
+
+Feature: Contact Us Page (Child of Epic)
+- Create the header for Contact Us Page (Child of Feature)
+- Add the footer for Contact Us Page (Child of Feature)
+- Build the body layout with contact form (Child of Feature)
+- Add form validation for name, email, and message fields (Child of Feature)
+
+Feature: About Us Page (Child of Epic)
+- Create the header for About Us Page (Child of Feature)
+- Add the footer for About Us Page (Child of Feature)
+- Build the body layout with company description and mission (Child of Feature)
+
+Feature: Track Page (Admin) (Child of Epic)
+- Create the header for Track Page (Child of Feature)
+- Add the footer for Track Page (Child of Feature)
+- Build the body layout to display open and closed orders (Child of Feature)
+- Connect Track Page to order database for admin filtering (Child of Feature)
+
+Feature: Register Page (Child of Epic)
+- Create the header for Register Page (Child of Feature)
+- Add the footer for Register Page (Child of Feature)
+- Build the body layout with registration form (Child of Feature)
+- Add form validation for username, password, email (Child of Feature)
+- Connect Register Page to user database for account creation (Child of Feature)
+
+Feature: Login Page (Child of Epic)
+- Create the header for Login Page (Child of Feature)
+- Add the footer for Login Page (Child of Feature)
+- Build the body layout with login form (Child of Feature)
+- Add session logic to assign role (User/Admin) after login (Child of Feature)
+
+Feature: Admin Dashboard (Child of Epic)
+- Create the header for Admin Dashboard (Child of Feature)
+- Add the footer for Admin Dashboard (Child of Feature)
+- Build the body layout with product and user management tools (Child of Feature)
+- Connect Admin Dashboard to product and user databases (Child of Feature)
+
+Feature: Order View Page (Child of Epic)
+- Create the header for Order View Page (Child of Feature)
+- Add the footer for Order View Page (Child of Feature)
+- Build the body layout to display ordered items and total amount (Child of Feature)
+
+Feature: PayPal Payment Page (Child of Epic)
+- Create the header for PayPal Payment Page (Child of Feature)
+- Add the footer for PayPal Payment Page (Child of Feature)
+- Build the body layout with payment summary and PayPal integration (Child of Feature)
+
+Feature: Success Page (Child of Epic)
+- Create the header for Success Page (Child of Feature)
+- Add the footer for Success Page (Child of Feature)
+- Build the body layout with confirmation message and order details (Child of Feature)
+
+Feature: Failed Page (Child of Epic)
+- Create the header for Failed Page (Child of Feature)
+- Add the footer for Failed Page (Child of Feature)
+- Build the body layout with error message and retry option (Child of Feature)

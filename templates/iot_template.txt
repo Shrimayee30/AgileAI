@@ -1,0 +1,115 @@
+AgileAI IoT System Template (Strict Scope Version)
+
+Purpose:
+This template guides the model to transform a project description document (e.g., PDF or extracted text) for an IoT system into a structured Agile output consisting of:
+- Epic
+- Features
+- User Stories
+
+It enforces strict grounding: all output must be traceable to the input. No hallucination, inference, or generic filler is allowed.
+
+INPUT SPECIFICATION
+
+Input Type:
+- A single project description document (PDF or extracted text)
+
+Required Content in Input:
+- Purpose or goal of the IoT system
+- Devices, modules, or control units involved
+- Functional requirements or automation logic
+- Technologies, sensors, or protocols used
+- User roles or control interfaces (optional)
+
+Strict Input Rules:
+- The input must be treated as the sole source of truth
+- Only generate output elements that are explicitly described in the input
+- Do not infer or invent devices, components, or tasks
+
+OUTPUT SPECIFICATION
+
+Output Format:
+Plain text structured as follows:
+
+Epic:
+[Purpose or goal of the IoT system — must be explicitly stated or clearly implied in the input]
+
+Features:
+[List of devices, modules, or control units — only those explicitly mentioned in the input]
+
+User Stories:
+[For each feature, list small, achievable development tasks. These should reflect real implementation work and be phrased as sprint-ready titles.]
+
+Feature: [Feature Name] (Child of Epic)
+- [User Story 1] (Child of Feature)
+- [User Story 2] (Child of Feature)
+- ...
+
+DEFINITIONS
+
+Epic:
+- A concise, high-level title that summarizes the overall goal of the IoT system
+- Must reflect the main deliverable or purpose
+- Example: Home Automation System, Smart Irrigation Controller, Industrial Sensor Network
+
+Feature:
+- A major device, module, or control unit in the IoT system
+- Must be explicitly mentioned in the input
+- Each Feature is a child of the Epic
+- Examples: Lighting Control, Thermostat Module, Security Camera, Voice Assistant Integration
+
+User Story:
+- A small, actionable development task tied to a specific feature
+- Must be grounded in the input document
+- Each User Story is a child of a Feature
+- Should be phrased as a sprint-ready title (imperative, implementation-focused)
+- Examples: Connect motion sensor to lighting module, Configure temperature thresholds for thermostat, Enable voice commands for door lock
+
+CONSTRAINTS
+
+- Strict grounding: Every Epic, Feature, and User Story must be traceable to the input document
+- No hallucination: Do not invent devices, components, or tasks
+- No generic filler: Avoid adding default elements like “Settings Panel” unless explicitly mentioned
+- Domain-aware phrasing: Use task formats appropriate to IoT workflows (e.g., “Connect sensor”, “Configure threshold”, “Send alert”)
+
+SAMPLE TRAINING EXAMPLE
+
+### Input:
+Project Description:
+This IoT system automates key functions in a smart home. It includes modules for lighting control, thermostat regulation, door security, and voice assistant integration. The lighting module uses motion sensors to turn lights on/off. The thermostat module adjusts temperature based on user preferences and time of day. The door security module includes a smart lock and camera feed. The system integrates with Alexa for voice commands. Data is logged to a cloud dashboard for monitoring.
+
+### Output:
+Epic:
+Home Automation System
+
+Features:
+- Lighting Control Module
+- Thermostat Module
+- Door Security Module
+- Voice Assistant Integration
+- Cloud Monitoring Dashboard
+
+User Stories:
+
+Feature: Lighting Control Module (Child of Epic)
+- Connect motion sensor to lighting module (Child of Feature)
+- Configure auto-off timer for inactive rooms (Child of Feature)
+- Log lighting activity to cloud dashboard (Child of Feature)
+
+Feature: Thermostat Module (Child of Epic)
+- Set temperature thresholds for day and night (Child of Feature)
+- Connect thermostat to room temperature sensor (Child of Feature)
+- Enable manual override via mobile app (Child of Feature)
+
+Feature: Door Security Module (Child of Epic)
+- Integrate smart lock with camera feed (Child of Feature)
+- Enable remote lock/unlock via app (Child of Feature)
+- Log access events to cloud dashboard (Child of Feature)
+
+Feature: Voice Assistant Integration (Child of Epic)
+- Enable Alexa voice commands for lighting and thermostat (Child of Feature)
+- Configure voice-triggered security alerts (Child of Feature)
+
+Feature: Cloud Monitoring Dashboard (Child of Epic)
+- Build dashboard to display sensor data and device status (Child of Feature)
+- Connect all modules to cloud database (Child of Feature)
+- Add alert system for abnormal readings (Child of Feature)

@@ -1,0 +1,111 @@
+AgileAI AI System Template (Strict Scope Version)
+
+Purpose:
+This template guides the model to transform a project description document (e.g., PDF or extracted text) for an AI system into a structured Agile output consisting of:
+- Epic
+- Features
+- User Stories
+
+It enforces strict grounding: all output must be traceable to the input. No hallucination, inference, or generic filler is allowed.
+
+INPUT SPECIFICATION
+
+Input Type:
+- A single project description document (PDF or extracted text)
+
+Required Content in Input:
+- Purpose or goal of the AI system
+- Pipeline stages or components (e.g., preprocessing, training, testing, deployment)
+- Functional requirements or tasks within each stage
+- Technologies, models, or data sources used
+- Evaluation metrics or maintenance strategies (optional)
+
+Strict Input Rules:
+- The input must be treated as the sole source of truth
+- Only generate output elements that are explicitly described in the input
+- Do not infer or invent stages, components, or tasks
+
+OUTPUT SPECIFICATION
+
+Output Format:
+Plain text structured as follows:
+
+Epic:
+[Purpose or goal of the AI system — must be explicitly stated or clearly implied in the input]
+
+Features:
+[List of pipeline stages or modules — only those explicitly mentioned in the input]
+
+User Stories:
+[For each feature, list small, achievable development tasks. These should reflect real implementation work and be phrased as sprint-ready titles.]
+
+Feature: [Feature Name] (Child of Epic)
+- [User Story 1] (Child of Feature)
+- [User Story 2] (Child of Feature)
+- ...
+
+DEFINITIONS
+
+Epic:
+- A concise, high-level title that summarizes the overall goal of the AI system
+- Must reflect the main deliverable or purpose
+- Example: Fraud Detection AI System, Customer Churn Prediction Model
+
+Feature:
+- A major pipeline stage or module of the AI system
+- Must be explicitly mentioned in the input
+- Each Feature is a child of the Epic
+- Examples: Preprocessing, Model Training, Evaluation, Deployment, Monitoring
+
+User Story:
+- A small, actionable development task tied to a specific feature
+- Must be grounded in the input document
+- Each User Story is a child of a Feature
+- Should be phrased as a sprint-ready title (imperative, implementation-focused)
+- Examples: Impute and encode the categorical data, Train XGBoost model on balanced dataset, Deploy model via REST API
+
+CONSTRAINTS
+
+- Strict grounding: Every Epic, Feature, and User Story must be traceable to the input document
+- No hallucination: Do not invent stages, components, or tasks
+- No generic filler: Avoid adding default elements like “Model Monitoring” unless explicitly mentioned
+- Domain-aware phrasing: Use task formats appropriate to AI workflows (e.g., “Train model”, “Evaluate accuracy”, “Deploy via API”)
+
+SAMPLE TRAINING EXAMPLE
+
+### Input:
+Project Description:
+This AI system is designed to detect fraudulent transactions in financial datasets. It includes stages for preprocessing, training, testing, and deployment. The preprocessing stage involves handling missing values, encoding categorical variables, and scaling numerical features. The training stage uses an XGBoost classifier with hyperparameter tuning. The testing stage evaluates accuracy, precision, and recall. The deployment stage exposes the model via a REST API. The system uses Python, scikit-learn, and Flask.
+
+### Output:
+Epic:
+Fraud Detection AI System
+
+Features:
+- Preprocessing
+- Model Training
+- Model Testing
+- Deployment
+
+User Stories:
+
+Feature: Preprocessing (Child of Epic)
+- Impute missing values in transaction data (Child of Feature)
+- Encode categorical features using one-hot encoding (Child of Feature)
+- Scale numerical features using MinMaxScaler (Child of Feature)
+- Create new features for transaction frequency and amount (Child of Feature)
+
+Feature: Model Training (Child of Epic)
+- Train XGBoost classifier on preprocessed data (Child of Feature)
+- Perform hyperparameter tuning using grid search (Child of Feature)
+- Save trained model to disk (Child of Feature)
+
+Feature: Model Testing (Child of Epic)
+- Evaluate model accuracy on test set (Child of Feature)
+- Calculate precision, recall, and F1-score (Child of Feature)
+- Generate confusion matrix for fraud detection (Child of Feature)
+
+Feature: Deployment (Child of Epic)
+- Build REST API using Flask to serve predictions (Child of Feature)
+- Integrate model into API endpoint for transaction scoring (Child of Feature)
+- Add input validation to API request handler (Child of Feature)

@@ -1,0 +1,140 @@
+AgileAI Mobile Application Template (Strict Scope Version)
+
+Purpose:
+This template guides the model to transform a mobile app project description (e.g., PDF or extracted text) into a structured Agile output consisting of:
+- Epic
+- Features
+- User Stories
+
+It enforces strict grounding: all output must be traceable to the input. No hallucination, inference, or generic filler is allowed.
+
+INPUT SPECIFICATION
+
+Input Type:
+- A single project description document (PDF or extracted text)
+
+Required Content in Input:
+- App name or purpose
+- List of screens, tabs, or modules to be built
+- Functional requirements for each screen
+- Technologies or integrations (e.g., biometric login, push notifications)
+- User roles or flows (optional)
+
+Strict Input Rules:
+- The input must be treated as the sole source of truth
+- Only generate output elements that are explicitly described in the input
+- Do not infer or invent screens, components, or tasks
+
+OUTPUT SPECIFICATION
+
+Output Format:
+Plain text structured as follows:
+
+Epic:
+[Name or purpose of the mobile application — must be explicitly stated or clearly implied in the input]
+
+Features:
+[List of screens, tabs, or modules — only those explicitly mentioned in the input]
+
+User Stories:
+[For each feature, list small, achievable development tasks. These should reflect real implementation work and be phrased as sprint-ready titles.]
+
+Feature: [Feature Name] (Child of Epic)
+- Create the header for [Feature Name] (Child of Feature)
+- Add the footer for [Feature Name] (Child of Feature)
+- Build the body layout for [Feature Name] (Child of Feature)
+- Add navigation bar to [Feature Name] (only if navigation is mentioned)
+- Add form fields to [Feature Name] (only if forms are mentioned)
+- Connect [Feature Name] to local or remote database (only if data is mentioned)
+- Add validation logic for [Feature Name] (only if input validation is described)
+- Integrate [specific component] into [Feature Name] (only if mentioned)
+
+DEFINITIONS
+
+Epic:
+- The name or purpose of the mobile application
+- Must be explicitly stated or clearly implied in the input
+- Example: Mobile Banking App, Fitness Tracker, Event Booking App
+
+Feature:
+- A distinct screen, tab, or module of the mobile app
+- Must be explicitly mentioned in the input
+- Each Feature is a child of the Epic
+- Examples: Login Screen, Dashboard, Transaction History, Profile Settings
+
+User Story:
+- A small, actionable development task tied to a specific feature
+- Must be grounded in the input document
+- Each User Story is a child of a Feature
+- Should be phrased as a sprint-ready title (imperative, implementation-focused)
+- Examples: Add biometric login to Login Screen, Build transaction list layout for Dashboard, Connect Profile Settings to user database
+
+CONSTRAINTS
+
+- Strict grounding: Every Epic, Feature, and User Story must be traceable to the input document
+- No hallucination: Do not invent screens, components, or tasks
+- No generic filler: Avoid adding default elements like “Settings Screen” or “Search Bar” unless explicitly mentioned
+- Domain-aware phrasing: Use task formats appropriate to mobile development (e.g., “Add toggle”, “Connect to database”, “Build layout”)
+
+SAMPLE TRAINING EXAMPLE
+
+### Input:
+Project Description:
+This mobile application enables users to manage their digital banking needs. It includes screens for Login, Dashboard, Account Summary, Transaction History, Fund Transfer, Bill Payments, Profile Settings, and Notifications. Users can log in using biometric authentication, view account balances, transfer funds between accounts, pay bills, and update personal information. The app supports push notifications for transaction alerts and uses secure APIs to connect to the bank’s backend systems.
+
+### Output:
+Epic:
+Digital Banking Mobile Application
+
+Features:
+- Login Screen
+- Dashboard
+- Account Summary Screen
+- Transaction History Screen
+- Fund Transfer Screen
+- Bill Payments Screen
+- Profile Settings Screen
+- Notifications Module
+
+User Stories:
+
+Feature: Login Screen (Child of Epic)
+- Build the body layout with username and password fields (Child of Feature)
+- Add biometric login option (Child of Feature)
+- Connect Login Screen to authentication API (Child of Feature)
+- Add validation logic for login credentials (Child of Feature)
+
+Feature: Dashboard (Child of Epic)
+- Create the header for Dashboard (Child of Feature)
+- Build the body layout to display account overview and quick actions (Child of Feature)
+- Add navigation bar to switch between screens (Child of Feature)
+
+Feature: Account Summary Screen (Child of Epic)
+- Build the body layout to show account balances and recent activity (Child of Feature)
+- Connect Account Summary Screen to account data API (Child of Feature)
+
+Feature: Transaction History Screen (Child of Epic)
+- Build the body layout to list recent transactions (Child of Feature)
+- Add filters for date range and transaction type (Child of Feature)
+- Connect Transaction History Screen to transaction database (Child of Feature)
+
+Feature: Fund Transfer Screen (Child of Epic)
+- Build the body layout with source and destination account selectors (Child of Feature)
+- Add form fields for amount and remarks (Child of Feature)
+- Connect Fund Transfer Screen to transfer API (Child of Feature)
+- Add validation for sufficient balance and account format (Child of Feature)
+
+Feature: Bill Payments Screen (Child of Epic)
+- Build the body layout with biller list and payment form (Child of Feature)
+- Connect Bill Payments Screen to biller API (Child of Feature)
+- Add confirmation dialog before payment submission (Child of Feature)
+
+Feature: Profile Settings Screen (Child of Epic)
+- Build the body layout with editable personal information fields (Child of Feature)
+- Add form validation for email and phone number (Child of Feature)
+- Connect Profile Settings Screen to user profile database (Child of Feature)
+
+Feature: Notifications Module (Child of Epic)
+- Build the layout to display transaction alerts and messages (Child of Feature)
+- Integrate push notification service (Child of Feature)
+- Add toggle to enable/disable notifications (Child of Feature)

@@ -1,0 +1,116 @@
+AgileAI Data Science Template (Strict Scope Version)
+
+Purpose:
+This template guides the model to transform a project description document (e.g., PDF or extracted text) for a data science project into a structured Agile output consisting of:
+- Epic
+- Features
+- User Stories
+
+It enforces strict grounding: all output must be traceable to the input. No hallucination, inference, or generic filler is allowed.
+
+INPUT SPECIFICATION
+
+Input Type:
+- A single project description document (PDF or extracted text)
+
+Required Content in Input:
+- Purpose or goal of the data science project
+- Workflow stages or modules (e.g., data ingestion, cleaning, analysis, visualization, reporting)
+- Functional requirements or tasks within each stage
+- Technologies, datasets, or metrics used
+- Business questions or decision goals (optional)
+
+Strict Input Rules:
+- The input must be treated as the sole source of truth
+- Only generate output elements that are explicitly described in the input
+- Do not infer or invent stages, components, or tasks
+
+OUTPUT SPECIFICATION
+
+Output Format:
+Plain text structured as follows:
+
+Epic:
+[Purpose or goal of the data science project — must be explicitly stated or clearly implied in the input]
+
+Features:
+[List of workflow stages or modules — only those explicitly mentioned in the input]
+
+User Stories:
+[For each feature, list small, achievable development tasks. These should reflect real implementation work and be phrased as sprint-ready titles.]
+
+Feature: [Feature Name] (Child of Epic)
+- [User Story 1] (Child of Feature)
+- [User Story 2] (Child of Feature)
+- ...
+
+DEFINITIONS
+
+Epic:
+- A concise, high-level title that summarizes the overall goal of the data science project
+- Must reflect the main deliverable or purpose
+- Example: Sales Analysis Dashboard, Customer Segmentation Study
+
+Feature:
+- A major workflow stage or module of the data science pipeline
+- Must be explicitly mentioned in the input
+- Each Feature is a child of the Epic
+- Examples: Data Ingestion, Data Cleaning, Exploratory Analysis, Visualization, Reporting
+
+User Story:
+- A small, actionable development task tied to a specific feature
+- Must be grounded in the input document
+- Each User Story is a child of a Feature
+- Should be phrased as a sprint-ready title (imperative, implementation-focused)
+- Examples: Load sales data from CSV, Remove null values from revenue column, Create bar chart of monthly sales
+
+CONSTRAINTS
+
+- Strict grounding: Every Epic, Feature, and User Story must be traceable to the input document
+- No hallucination: Do not invent stages, components, or tasks
+- No generic filler: Avoid adding default elements like “Export to PDF” unless explicitly mentioned
+- Domain-aware phrasing: Use task formats appropriate to data workflows (e.g., “Clean column”, “Plot trend”, “Group by region”)
+
+SAMPLE TRAINING EXAMPLE
+
+### Input:
+Project Description:
+This data science project analyzes retail sales data to uncover trends and support business decisions. It includes stages for data ingestion, cleaning, exploratory analysis, visualization, and reporting. The dataset contains transaction-level data including date, product category, region, quantity sold, and revenue. The goal is to identify seasonal trends, top-performing regions, and product categories. The final output is a dashboard with interactive charts and summary tables. Tools used include Python, pandas, matplotlib, and Power BI.
+
+### Output:
+Epic:
+Sales Analysis Dashboard
+
+Features:
+- Data Ingestion
+- Data Cleaning
+- Exploratory Analysis
+- Visualization
+- Reporting
+
+User Stories:
+
+Feature: Data Ingestion (Child of Epic)
+- Load sales data from CSV file (Child of Feature)
+- Parse date column into datetime format (Child of Feature)
+- Verify column names and data types (Child of Feature)
+
+Feature: Data Cleaning (Child of Epic)
+- Remove null values from revenue and quantity columns (Child of Feature)
+- Filter out transactions with negative quantity or revenue (Child of Feature)
+- Standardize region names to title case (Child of Feature)
+
+Feature: Exploratory Analysis (Child of Epic)
+- Group sales data by month and region (Child of Feature)
+- Calculate total revenue per product category (Child of Feature)
+- Identify top 5 regions by total sales (Child of Feature)
+
+Feature: Visualization (Child of Epic)
+- Create bar chart of monthly revenue trends (Child of Feature)
+- Build pie chart of revenue by product category (Child of Feature)
+- Generate line chart of sales growth over time (Child of Feature)
+
+Feature: Reporting (Child of Epic)
+- Create summary table of top-performing regions (Child of Feature)
+- Export cleaned dataset to Excel for stakeholders (Child of Feature)
+- Build interactive dashboard in Power BI (Child of Feature)

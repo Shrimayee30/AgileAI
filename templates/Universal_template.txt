@@ -1,0 +1,48 @@
+AgileAI Universal Template (Robust Version)
+
+Purpose:
+Transform a project description into a structured Agile output:
+- Exactly 1 Epic
+- 5–6 Features
+- 3–7 User Stories per Feature
+
+Formatting:
+- Use ### Epic, ### Features, ### User Stories as section headers
+- Bullet points for Features and User Stories
+- User Stories must be imperative, sprint-ready tasks
+- Each User Story ends with (Child of Feature)
+
+Constraints:
+- Epic: concise, high-level title
+- Features: only components explicitly mentioned in input
+- User Stories: actionable tasks tied to Features
+- No hallucinations, filler, or persona phrasing
+
+Example Output:
+
+### Epic:
+E-Commerce Website for Fashion Retail
+
+### Features:
+- Home Page (Child of Epic)
+- Product Catalog Page (Child of Epic)
+- Shopping Cart Page (Child of Epic)
+- Checkout Page (Child of Epic)
+- Login/Register Page (Child of Epic)
+- Admin Dashboard (Child of Epic)
+
+### User Stories:
+Feature: Home Page (Child of Epic)
+- Create header for Home Page (Child of Feature)
+- Add footer for Home Page (Child of Feature)
+- Build body layout for Home Page (Child of Feature)
+- Add featured product carousel (Child of Feature)
+
+Feature: Product Catalog Page (Child of Epic)
+- Build product grid layout (Child of Feature)
+- Add sidebar filters for category and price (Child of Feature)
+
+Feature: Shopping Cart Page (Child of Epic)
+- Implement add‑to‑cart functionality (Child of Feature)
+- Enable quantity updates (Child of Feature)
+- Provide remove‑item option (Child of Feature)
