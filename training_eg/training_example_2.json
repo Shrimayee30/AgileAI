@@ -1,0 +1,283 @@
+{
+  "epic": {
+    "title": "Clothing Store Build",
+    "summary": "Deliver a basic online clothing store with catalog, cart, PayPal checkout, COD option and admin operations."
+  },
+  "features": [
+    {
+      "title": "Landing",
+      "description": "Home screen and primary navigation.",
+      "webpage": "Home Page",
+      "stories": [
+        {
+          "id": "F1-S1",
+          "title": "Create responsive header",
+          "description": "Create responsive header with brand and main navigation.",
+          "acceptance_criteria": [
+            "Header contains brand name and navigation links",
+            "Header behaves responsively on mobile and desktop",
+            "Navigation links match site routes"
+          ],
+          "definition_of_ready": [
+            "Brand assets available",
+            "Route map provided",
+            "Header design approved"
+          ],
+          "raw_text_reference": "Welcome Sidhu! Role: Visitor"
+        },
+        {
+          "id": "F1-S2",
+          "title": "Implement footer",
+          "description": "Implement footer with copyright text and about link.",
+          "acceptance_criteria": [
+            "Footer displays copyright text",
+            "About link navigates to About Us page",
+            "Footer layout matches design at all breakpoints"
+          ],
+          "definition_of_ready": [
+            "Footer copy provided",
+            "About page route confirmed",
+            "Footer design ready"
+          ],
+          "raw_text_reference": "Copyright @ 2014 - Online Purchase (Clothes)."
+        },
+        {
+          "id": "F1-S3",
+          "title": "Add quick links",
+          "description": "Add quick links module for Clothing, Order Us, Contact Us and Track.",
+          "acceptance_criteria": [
+            "Quick links present and clickable",
+            "Links reflect current active page state",
+            "Accessible (keyboard and screen reader) links"
+          ],
+          "definition_of_ready": [
+            "List of quick links finalized",
+            "Accessible link behavior defined",
+            "Design for quick links ready"
+          ],
+          "raw_text_reference": "Clothing Order Us Contact Us About Us Track"
+        }
+      ]
+    },
+    {
+      "title": "Product Catalog",
+      "description": "Clothing page UI: product cards, details and filtering.",
+      "webpage": "Clothing Page",
+      "stories": [
+        {
+          "id": "F2-S1",
+          "title": "Build product card",
+          "description": "Implement product card component with image and short description.",
+          "acceptance_criteria": [
+            "Each card shows image, title and short description",
+            "Cards align into responsive grid",
+            "Image alt text present for accessibility"
+          ],
+          "definition_of_ready": [
+            "Product fields provided by API",
+            "Card layout available",
+            "Image hosting endpoint defined"
+          ],
+          "raw_text_reference": "This page consists of product details."
+        },
+        {
+          "id": "F2-S2",
+          "title": "Add order button",
+          "description": "Add 'Order this Product' action on product card to start checkout.",
+          "acceptance_criteria": [
+            "Button navigates to order flow with selected product prefilled",
+            "Button disabled when out of stock",
+            "Action tracked in analytics"
+          ],
+          "definition_of_ready": [
+            "Order flow route determined",
+            "Stock availability field present",
+            "Analytics event name defined"
+          ],
+          "raw_text_reference": "$21.65 (Order this Product)"
+        },
+        {
+          "id": "F2-S3",
+          "title": "Show price and id",
+          "description": "Expose cost, category and Product ID on product card for quick reference.",
+          "acceptance_criteria": [
+            "Each card displays price and category label",
+            "Product ID visible in admin view or modal",
+            "Formatting of price consistent site-wide"
+          ],
+          "definition_of_ready": [
+            "Price format defined",
+            "Category taxonomy available",
+            "Product ID field confirmed"
+          ],
+          "raw_text_reference": "Product; Product ID; Cost; Category"
+        }
+      ]
+    },
+    {
+      "title": "Cart and Review",
+      "description": "Cart building and order review prior to checkout.",
+      "webpage": "Order Us Page",
+      "stories": [
+        {
+          "id": "F3-S1",
+          "title": "Aggregate cart totals",
+          "description": "Aggregate cart and display total quantity and amount.",
+          "acceptance_criteria": [
+            "Cart displays total quantity and grand total",
+            "Totals include taxes and delivery charges",
+            "Cart persisted for authenticated users"
+          ],
+          "definition_of_ready": [
+            "Tax/delivery rules provided",
+            "Cart persistence approach chosen",
+            "Line item model documented"
+          ],
+          "raw_text_reference": "Total Qantity : 3 Total Amount USD : $ 74.87"
+        },
+        {
+          "id": "F3-S2",
+          "title": "Enable item updates",
+          "description": "Enable item removal and quantity update in cart UI.",
+          "acceptance_criteria": [
+            "Users can increment/decrement quantities",
+            "Removing item updates totals immediately",
+            "Undo option available for removal"
+          ],
+          "definition_of_ready": [
+            "Cart update API defined",
+            "UX for undo removal approved",
+            "Client-side validation rules defined"
+          ],
+          "raw_text_reference": "it should be convenient for the customer to view the contents of their cart and to be able to remove or add items to their cart"
+        },
+        {
+          "id": "F3-S3",
+          "title": "Show confirmation page",
+          "description": "Show order confirmation page listing line items and grand total before payment.",
+          "acceptance_criteria": [
+            "Order confirmation shows each item, qty and price",
+            "Grand total displays taxes/delivery if applied",
+            "Confirm button proceeds to payment selection"
+          ],
+          "definition_of_ready": [
+            "Confirmation template provided",
+            "Payment selection options decided",
+            "Cart to order mapping documented"
+          ],
+          "raw_text_reference": "Once users order item they are able to see ordered products and grand total."
+        }
+      ]
+    },
+    {
+      "title": "Payment Integration",
+      "description": "PayPal instant payment and fallback COD option with confirmation pages.",
+      "webpage": "PayPal For Payment",
+      "stories": [
+        {
+          "id": "F4-S1",
+          "title": "Integrate PayPal",
+          "description": "Integrate PayPal checkout and redirect users to PayPal with order summary.",
+          "acceptance_criteria": [
+            "User redirected to PayPal with itemized order details",
+            "PayPal returns user to success or failure URL",
+            "Order status updated upon PayPal confirmation"
+          ],
+          "definition_of_ready": [
+            "PayPal sandbox credentials available",
+            "Success and failure URLs configured",
+            "Itemized order schema ready"
+          ],
+          "raw_text_reference": "redirected to PayPal payment page for Instant Pay"
+        },
+        {
+          "id": "F4-S2",
+          "title": "Add payment pages",
+          "description": "Implement success and failed payment pages with clear messaging.",
+          "acceptance_criteria": [
+            "Success page shows order ID and confirmation message",
+            "Failed page shows retry instructions",
+            "Both pages accessible only post-payment callback"
+          ],
+          "definition_of_ready": [
+            "Success/Failure page designs provided",
+            "Payment callback handling specified",
+            "Email confirmation template ready"
+          ],
+          "raw_text_reference": "Congratulations! Transaction completed successfully."
+        },
+        {
+          "id": "F4-S3",
+          "title": "Support COD",
+          "description": "Support Cash on Delivery by recording unpaid orders for admin processing.",
+          "acceptance_criteria": [
+            "COD orders saved with payment status 'pending'",
+            "Admin dashboard shows COD open/closed grouping",
+            "User sees COD order confirmation with next steps"
+          ],
+          "definition_of_ready": [
+            "Order payment status enum includes 'COD'",
+            "Admin COD workflow documented",
+            "User messaging for COD defined"
+          ],
+          "raw_text_reference": "Cash on Delivery (Pay Later) option"
+        }
+      ]
+    },
+    {
+      "title": "Admin Console",
+      "description": "Admin features for product/user/order management and shipping updates.",
+      "webpage": "Track For Admin Page",
+      "stories": [
+        {
+          "id": "F5-S1",
+          "title": "Admin product editor",
+          "description": "Create admin product editor matching Shopping table fields.",
+          "acceptance_criteria": [
+            "Admin can set ID, Product name, Product ID, Cost, Category, Image, Description",
+            "Changes persist to DB and appear in public catalog",
+            "Validation prevents invalid price formats"
+          ],
+          "definition_of_ready": [
+            "Shopping table schema confirmed",
+            "Image upload mechanism chosen",
+            "Admin auth enforced"
+          ],
+          "raw_text_reference": "Shopping: ID, Product, Product ID, Cost, Category, Image, Description"
+        },
+        {
+          "id": "F5-S2",
+          "title": "Orders list view",
+          "description": "Build orders list view with filters for COD Open/Closed states.",
+          "acceptance_criteria": [
+            "Orders list filters by payment type and open/closed states",
+            "Selecting an order shows details and shipping actions",
+            "Orders sorted by date by default"
+          ],
+          "definition_of_ready": [
+            "Order status values documented",
+            "Filtering UI design provided",
+            "Orders sample dataset available"
+          ],
+          "raw_text_reference": "COD | Open Orders COD | Closed Orders"
+        },
+        {
+          "id": "F5-S3",
+          "title": "Mark shipped action",
+          "description": "Add 'mark shipped' action which sets OrderShipped and emails the customer.",
+          "acceptance_criteria": [
+            "Marking shipped sets OrderShipped and records ship date",
+            "Customer receives shipment confirmation email",
+            "Action recorded in audit log"
+          ],
+          "definition_of_ready": [
+            "Email template for shipment ready",
+            "Shipment date field defined",
+            "Admin permission to ship confirmed"
+          ],
+          "raw_text_reference": "Admin can ship order to user based on order placed by sending confirmation mail."
+        }
+      ]
+    }
+  ]
+}

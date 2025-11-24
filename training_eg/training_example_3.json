@@ -1,0 +1,283 @@
+{
+  "epic": {
+    "title": "Minimal Fashion E-Store",
+    "summary": "Deliver a minimal, user-friendly ASP.NET fashion store with catalog browsing, secure checkout, and admin management."
+  },
+  "features": [
+    {
+      "title": "Homepage Shell",
+      "description": "Layout pieces for the home screen: header, nav, sidebar and footer.",
+      "webpage": "Home Page",
+      "stories": [
+        {
+          "id": "F1-S1",
+          "title": "Header with role indicator",
+          "description": "Implement header with logo and a visible role indicator.",
+          "acceptance_criteria": [
+            "Logo renders and links to Home",
+            "Role indicator displays 'Visitor' when not logged in and username when logged in",
+            "Header passes basic accessibility checks"
+          ],
+          "definition_of_ready": [
+            "Logo asset provided",
+            "Session API endpoint available",
+            "Header design approved"
+          ],
+          "raw_text_reference": "Welcome Sidhu! Role: Visitor"
+        },
+        {
+          "id": "F1-S2",
+          "title": "Build sidebar links",
+          "description": "Build sidebar/quick-links module for Clothing and Order Us navigation.",
+          "acceptance_criteria": [
+            "Sidebar contains links to Clothing and Order Us",
+            "Links are keyboard accessible",
+            "Sidebar collapses on smaller screens"
+          ],
+          "definition_of_ready": [
+            "List of quick-links finalized",
+            "Sidebar UX spec provided",
+            "Routes configured"
+          ],
+          "raw_text_reference": "Clothing Order Us Contact Us About Us Track"
+        },
+        {
+          "id": "F1-S3",
+          "title": "Add footer",
+          "description": "Implement footer with copyright and contact link.",
+          "acceptance_criteria": [
+            "Footer shows copyright line",
+            "Contact link navigates to Contact Us page",
+            "Footer layout matches responsive spec"
+          ],
+          "definition_of_ready": [
+            "Footer copy provided",
+            "Contact route available",
+            "Footer design ready"
+          ],
+          "raw_text_reference": "Copyright @ 2014 - Online Purchase (Clothes)."
+        }
+      ]
+    },
+    {
+      "title": "Product Details",
+      "description": "Detailed product view and metadata presentation on Clothing Page.",
+      "webpage": "Clothing Page",
+      "stories": [
+        {
+          "id": "F2-S1",
+          "title": "Product detail component",
+          "description": "Create product detail component showing description and image.",
+          "acceptance_criteria": [
+            "Detail view shows image, description and price",
+            "User can open detail from product grid",
+            "Image zoom or modal available"
+          ],
+          "definition_of_ready": [
+            "Product detail design provided",
+            "API returns full product fields",
+            "Image assets accessible"
+          ],
+          "raw_text_reference": "Add an extra dose of style as you adorn this slim-fit T-shirt"
+        },
+        {
+          "id": "F2-S2",
+          "title": "Order button",
+          "description": "Implement 'Order this Product' button linking to order flow with product ID.",
+          "acceptance_criteria": [
+            "Button navigates to order flow with correct product ID",
+            "Product ID included in order payload",
+            "Button disabled if out of stock"
+          ],
+          "definition_of_ready": [
+            "Order flow route defined",
+            "Product ID field name known",
+            "Stock status field available"
+          ],
+          "raw_text_reference": "OSO1SS"
+        },
+        {
+          "id": "F2-S3",
+          "title": "Show price label",
+          "description": "Display price and category next to product title.",
+          "acceptance_criteria": [
+            "Price displayed in correct currency",
+            "Category label visible and clickable to filter by category",
+            "Formatting consistent across site"
+          ],
+          "definition_of_ready": [
+            "Currency and formatting rules defined",
+            "Category taxonomy available",
+            "Design for label provided"
+          ],
+          "raw_text_reference": "Cost $21.65 Category Polo T Shirts"
+        }
+      ]
+    },
+    {
+      "title": "Checkout UX",
+      "description": "Cart, order summary and redirection to payment.",
+      "webpage": "Order Us Page",
+      "stories": [
+        {
+          "id": "F3-S1",
+          "title": "Order summary page",
+          "description": "Implement order summary page listing products, quantities and line totals.",
+          "acceptance_criteria": [
+            "Summary lists item name, qty, unit price and line total",
+            "Grand total includes taxes and delivery if applicable",
+            "Summary page allows navigation back to edit cart"
+          ],
+          "definition_of_ready": [
+            "Cart to order mapping documented",
+            "Tax/delivery rules available",
+            "Summary UI design provided"
+          ],
+          "raw_text_reference": "Once users order item they are able to see ordered products and grand total."
+        },
+        {
+          "id": "F3-S2",
+          "title": "Create order record",
+          "description": "Wire checkout submit to create order record in Orders table.",
+          "acceptance_criteria": [
+            "Submission creates order row with required fields",
+            "Server returns order ID on success",
+            "System handles duplicate submissions idempotently"
+          ],
+          "definition_of_ready": [
+            "Orders DB schema provided",
+            "API endpoint spec available",
+            "Authentication configured"
+          ],
+          "raw_text_reference": "Orders: ID, Client, Product, Quantity, Price, Date, OrderShipped"
+        },
+        {
+          "id": "F3-S3",
+          "title": "Add client validation",
+          "description": "Add client-side validation for quantity and required fields before submission.",
+          "acceptance_criteria": [
+            "Invalid quantities block submission",
+            "Required fields flagged with inline error messages",
+            "Validation works on mobile and desktop"
+          ],
+          "definition_of_ready": [
+            "Validation rules defined",
+            "Form fields identified",
+            "UX for errors specified"
+          ],
+          "raw_text_reference": "Only registered member can purchase multiple products regardless of quantity."
+        }
+      ]
+    },
+    {
+      "title": "Payments & Confirm",
+      "description": "PayPal integration and success/failure messaging.",
+      "webpage": "PayPal For Payment",
+      "stories": [
+        {
+          "id": "F4-S1",
+          "title": "Redirect to PayPal",
+          "description": "Redirect to PayPal with itemized order summary for Instant Pay.",
+          "acceptance_criteria": [
+            "PayPal receives itemized payload and displays correct totals",
+            "User returned to success or failure URL after payment",
+            "Order status updates according to PayPal callback"
+          ],
+          "definition_of_ready": [
+            "PayPal sandbox credentials available",
+            "Success/failure endpoints configured",
+            "Itemized payload format agreed"
+          ],
+          "raw_text_reference": "PayPal payment processor (Instant Pay)"
+        },
+        {
+          "id": "F4-S2",
+          "title": "Success page and mail",
+          "description": "Implement success page showing order details and send mail confirmation.",
+          "acceptance_criteria": [
+            "Success page displays order ID and summary",
+            "Customer receives order details via email",
+            "Success page only accessible after valid payment callback"
+          ],
+          "definition_of_ready": [
+            "Email template ready",
+            "Payment callback flow documented",
+            "Order retrieval API available"
+          ],
+          "raw_text_reference": "Congratulations! Transaction completed successfully. You receive you order details in your mail"
+        },
+        {
+          "id": "F4-S3",
+          "title": "Failure page",
+          "description": "Implement failure page with retry instructions and contact link.",
+          "acceptance_criteria": [
+            "Failure page explains reason and provides retry button",
+            "Contact link goes to Contact Us page",
+            "Failure attempts logged for troubleshooting"
+          ],
+          "definition_of_ready": [
+            "Failure messages mapped to error codes",
+            "Retry UX designed",
+            "Contact route confirmed"
+          ],
+          "raw_text_reference": ":( Sorry! Transaction Failed. Please order again!"
+        }
+      ]
+    },
+    {
+      "title": "Admin Ops",
+      "description": "Admin tools for managing products, users and shipping state.",
+      "webpage": "Track For Admin Page",
+      "stories": [
+        {
+          "id": "F5-S1",
+          "title": "Admin product form",
+          "description": "Create DB-backed admin form to add and edit shopping table entries.",
+          "acceptance_criteria": [
+            "Admin can create/edit shopping table fields (ID, Product, Product ID, Cost, Category, Image, Description)",
+            "Saved changes reflect in public catalog",
+            "Form validates required fields"
+          ],
+          "definition_of_ready": [
+            "DB schema available",
+            "Admin auth in place",
+            "Image upload path configured"
+          ],
+          "raw_text_reference": "Shopping: ID, Product, Product ID, Cost, Category, Image, Description"
+        },
+        {
+          "id": "F5-S2",
+          "title": "Mark shipped",
+          "description": "Implement order list with ability to mark OrderShipped and record Date.",
+          "acceptance_criteria": [
+            "Admin can set OrderShipped and record ship date per order",
+            "Order status updates visible in admin and user views",
+            "Ship action triggers confirmation email"
+          ],
+          "definition_of_ready": [
+            "OrderShipped field defined",
+            "Email template for shipment available",
+            "Orders sample data ready"
+          ],
+          "raw_text_reference": "OrderShipped Date"
+        },
+        {
+          "id": "F5-S3",
+          "title": "Enforce admin access",
+          "description": "Enforce admin-only access for admin pages and actions.",
+          "acceptance_criteria": [
+            "Non-admin users cannot access admin routes",
+            "Unauthorized attempts return 403 or redirect",
+            "Admin UI hidden for non-admin sessions"
+          ],
+          "definition_of_ready": [
+            "Role/permission model defined",
+            "Auth middleware available",
+            "Admin user seeded for testing"
+          ],
+          "raw_text_reference": "Administrator can only perform administrative task on pages they are privileged to access."
+        }
+      ]
+    }
+  ]
+}
