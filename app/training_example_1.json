@@ -1,0 +1,338 @@
+{
+  "epic": {
+    "title": "Agile Webstore Build",
+    "summary": "Implement an ASP.NET e-commerce site (clothing) allowing browsing, ordering (PayPal or COD), and admin order/product management."
+  },
+  "features": [
+    {
+      "title": "Home Page",
+      "description": "Landing page, site role display and navigation to key pages.",
+      "webpage": "Home Page",
+      "stories": [
+        {
+          "id": "F1-S1",
+          "title": "Build header",
+          "description": "Implement page header with site title and role display.",
+          "acceptance_criteria": [
+            "Header displays site title text",
+            "Header shows user role placeholder (e.g., 'Visitor') when not authenticated and username when signed in",
+            "Header layout is responsive across common breakpoints"
+          ],
+          "definition_of_ready": [
+            "Header design mockup available",
+            "Brand text and fonts provided",
+            "Authentication/session API endpoint reachable"
+          ],
+          "raw_text_reference": "Welcome Sidhu! Role: Visitor"
+        },
+        {
+          "id": "F1-S2",
+          "title": "Add main navigation",
+          "description": "Build main navigation with links to Clothing, Order Us, Contact Us, About Us, Track.",
+          "acceptance_criteria": [
+            "Navigation contains working links to each listed page",
+            "Links navigate to correct client or server routes",
+            "Mobile collapsible menu functions under 768px"
+          ],
+          "definition_of_ready": [
+            "Route paths defined",
+            "Link labels provided",
+            "Navigation design approved"
+          ],
+          "raw_text_reference": "Clothing Order Us Contact Us About Us Track"
+        },
+        {
+          "id": "F1-S3",
+          "title": "Add hero CTA",
+          "description": "Add prominent CTA and featured product area on the home page.",
+          "acceptance_criteria": [
+            "CTA button visible and labeled 'BUY NOW' or equivalent",
+            "Featured area displays at least 3 products",
+            "Clicking CTA navigates to product listing or product detail"
+          ],
+          "definition_of_ready": [
+            "Featured product IDs selected",
+            "CTA label and destination confirmed",
+            "Product data accessible via API"
+          ],
+          "raw_text_reference": "BUY NOW"
+        }
+      ]
+    },
+    {
+      "title": "Clothing Page",
+      "description": "Product catalog page showing product metadata, images and category filters.",
+      "webpage": "Clothing Page",
+      "stories": [
+        {
+          "id": "F2-S1",
+          "title": "Implement product grid",
+          "description": "Implement product grid with image, Product ID, name and cost for each item.",
+          "acceptance_criteria": [
+            "Each product card shows image, Product ID, name and cost",
+            "Placeholder image shown when image missing",
+            "Grid supports pagination or lazy-load for >20 items"
+          ],
+          "definition_of_ready": [
+            "Product API endpoint available",
+            "Product field schema confirmed",
+            "Card design provided"
+          ],
+          "raw_text_reference": "Product; Product ID; Cost; Category"
+        },
+        {
+          "id": "F2-S2",
+          "title": "Add category filter",
+          "description": "Add category filter UI (e.g., Polo T Shirts) and wire it to the product list.",
+          "acceptance_criteria": [
+            "Selecting a category filters displayed products",
+            "Category state reflected in URL query params",
+            "Filter works with pagination"
+          ],
+          "definition_of_ready": [
+            "List of categories provided",
+            "API supports filtering by category",
+            "Filter UI design approved"
+          ],
+          "raw_text_reference": "Choose your category : Polo T Shirts"
+        },
+        {
+          "id": "F2-S3",
+          "title": "Show product modal",
+          "description": "Show product description and open image/details modal on product click.",
+          "acceptance_criteria": [
+            "Clicking product opens modal with image and description",
+            "Modal includes 'Order this Product' or 'Add to Cart' action",
+            "Modal closes on ESC and close button"
+          ],
+          "definition_of_ready": [
+            "Product description available in API",
+            "Modal component library chosen",
+            "UX behavior documented"
+          ],
+          "raw_text_reference": "This page consists of product details."
+        }
+      ]
+    },
+    {
+      "title": "Order Us Page",
+      "description": "Order creation page where registered users choose quantities and submit orders.",
+      "webpage": "Order Us Page",
+      "stories": [
+        {
+          "id": "F3-S1",
+          "title": "Add quantity selector",
+          "description": "Build quantity selector and add-to-cart behavior for each product row.",
+          "acceptance_criteria": [
+            "Quantity selector allows integers ≥ 0",
+            "Clicking 'Add' updates cart with correct product ID and quantity",
+            "UI shows confirmation/toast after add"
+          ],
+          "definition_of_ready": [
+            "Cart data model defined",
+            "Product IDs available from listing",
+            "Add-to-cart API or local store decided"
+          ],
+          "raw_text_reference": "Choose Quantity 0"
+        },
+        {
+          "id": "F3-S2",
+          "title": "Create cart summary",
+          "description": "Implement cart summary UI showing items, quantities and subtotal.",
+          "acceptance_criteria": [
+            "Cart lists product name, unit price, quantity and line total",
+            "Subtotal and grand total display including taxes/delivery if applicable",
+            "Cart persists for authenticated users across reloads"
+          ],
+          "definition_of_ready": [
+            "Tax/delivery calculation rules defined",
+            "Cart persistence strategy chosen",
+            "Subtotal format specified"
+          ],
+          "raw_text_reference": "Once users order item they are able to see ordered products and grand total."
+        },
+        {
+          "id": "F3-S3",
+          "title": "Create order endpoint",
+          "description": "Create server-side order submission endpoint that saves order with date and status.",
+          "acceptance_criteria": [
+            "POST /orders accepts order payload and returns order ID",
+            "Order stored with fields: Client, Product, Quantity, Price, Date, OrderShipped",
+            "Endpoint validates required fields and returns 400 on bad input"
+          ],
+          "definition_of_ready": [
+            "Orders table schema agreed",
+            "DB connection available",
+            "Auth token available for calls"
+          ],
+          "raw_text_reference": "Orders: ID, Client, Product, Quantity, Price, Date, OrderShipped"
+        }
+      ]
+    },
+    {
+      "title": "Contact Us Page",
+      "description": "Contact form and admin message handling.",
+      "webpage": "Contact Us Page",
+      "stories": [
+        {
+          "id": "F4-S1",
+          "title": "Build contact form",
+          "description": "Implement contact form fields: name, email, message and submit button.",
+          "acceptance_criteria": [
+            "Form validates required fields client-side",
+            "Submission returns success status and clears inputs",
+            "Form shows inline errors for invalid email format"
+          ],
+          "definition_of_ready": [
+            "Contact endpoint URL provided",
+            "Field labels and placeholders available",
+            "Email validation rules specified"
+          ],
+          "raw_text_reference": "Your Name ... Your Email ... Your Message ... Submit"
+        },
+        {
+          "id": "F4-S2",
+          "title": "Persist submissions",
+          "description": "Persist contact submissions and notify admin.",
+          "acceptance_criteria": [
+            "Submissions stored in a contact submissions table",
+            "Admin receives notification or sees submission in admin UI",
+            "Submission record includes timestamp and submitter email"
+          ],
+          "definition_of_ready": [
+            "Notification mechanism chosen",
+            "Admin contact email available",
+            "DB write permissions confirmed"
+          ],
+          "raw_text_reference": "ContactUs page is available to contact Admin for queries."
+        },
+        {
+          "id": "F4-S3",
+          "title": "Admin contact view",
+          "description": "Create admin view to list and reply to contact messages.",
+          "acceptance_criteria": [
+            "Admin can view submissions with unread/read status",
+            "Admin can send reply that emails the user",
+            "Replies logged against submission"
+          ],
+          "definition_of_ready": [
+            "Admin UI route defined",
+            "Email sending service configured",
+            "Auth/role check in place"
+          ],
+          "raw_text_reference": "ContactUs page is available to contact Admin for queries."
+        }
+      ]
+    },
+    {
+      "title": "Register and Login",
+      "description": "User account creation and authentication flows.",
+      "webpage": "Register Page",
+      "stories": [
+        {
+          "id": "F5-S1",
+          "title": "Build registration form",
+          "description": "Implement registration form with username, password, confirm password and email.",
+          "acceptance_criteria": [
+            "Form validates password confirmation and email format",
+            "Successful registration creates user record and returns success",
+            "New user receives confirmation (email or UI message)"
+          ],
+          "definition_of_ready": [
+            "User table schema confirmed",
+            "Password policy defined",
+            "Email service available"
+          ],
+          "raw_text_reference": "UserName Password Confirm Password Email Register"
+        },
+        {
+          "id": "F5-S2",
+          "title": "Implement login",
+          "description": "Implement login flow with optional 'Remember me' functionality.",
+          "acceptance_criteria": [
+            "Valid credentials return auth token or session",
+            "'Remember me' persists session across browser restarts",
+            "Invalid credentials return clear errors"
+          ],
+          "definition_of_ready": [
+            "Auth method decided (JWT/session)",
+            "Session token lifecycle specified",
+            "Secure cookie settings confirmed"
+          ],
+          "raw_text_reference": "Login page for both users and administrators. Remember me on this computer."
+        },
+        {
+          "id": "F5-S3",
+          "title": "Assign default role",
+          "description": "Ensure new registrations are assigned default role 'User'.",
+          "acceptance_criteria": [
+            "Newly registered users have role field set to 'User'",
+            "Role visible in user admin view",
+            "Role cannot be set to Admin via public registration"
+          ],
+          "definition_of_ready": [
+            "Role enumeration defined",
+            "Registration endpoint logic reviewed",
+            "Admin account creation process documented"
+          ],
+          "raw_text_reference": "Once user register site, his default role will be 'User'."
+        }
+      ]
+    },
+    {
+      "title": "Admin Tracking",
+      "description": "Admin UI for product/user management and order tracking (COD and Instant Pay).",
+      "webpage": "Track For Admin Page",
+      "stories": [
+        {
+          "id": "F6-S1",
+          "title": "Admin product CRUD",
+          "description": "Implement product CRUD in admin UI (add, edit, remove).",
+          "acceptance_criteria": [
+            "Admin can create, update and delete product records",
+            "Changes reflect in public product catalog within TTL",
+            "Image uploads handled and validated"
+          ],
+          "definition_of_ready": [
+            "Admin API endpoints available",
+            "Shopping table schema accessible",
+            "Admin auth established"
+          ],
+          "raw_text_reference": "Admin can add products, edit product information and add/remove product."
+        },
+        {
+          "id": "F6-S2",
+          "title": "User management UI",
+          "description": "Implement user management screens to add/edit/remove users.",
+          "acceptance_criteria": [
+            "Admin can view list of users and edit attributes",
+            "Admin can deactivate or remove a user",
+            "Audit log records user management actions"
+          ],
+          "definition_of_ready": [
+            "User schema accessible",
+            "Admin role permissions defined",
+            "Audit logging mechanism chosen"
+          ],
+          "raw_text_reference": "Admin can add user, edit user information and can remove user."
+        },
+        {
+          "id": "F6-S3",
+          "title": "Order tracking dashboard",
+          "description": "Build order tracking dashboard (COD Open/Closed) and ship action updating OrderShipped.",
+          "acceptance_criteria": [
+            "Orders list shows COD open/closed filters",
+            "'Mark as shipped' sets OrderShipped and records date",
+            "Customer receives confirmation email when order shipped"
+          ],
+          "definition_of_ready": [
+            "Orders table and status values defined",
+            "Email template for shipment ready",
+            "Admin shipping workflow documented"
+          ],
+          "raw_text_reference": "COD | Open Orders COD | Closed Orders"
+        }
+      ]
+    }
+  ]
+}
