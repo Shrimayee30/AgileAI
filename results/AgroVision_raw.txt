@@ -1,0 +1,53 @@
+{
+  "epic": {
+    "id": "f10c359e-7f5c-4049-9c1e-0f1f548f3931",
+    "title": "AgroVision Crop Disease Detection System",
+    "description": "AgroVision is an automated convolutional neural network based
+detection system capable of identifying common leaf-based diseases with high
+accuracy. It is positioned as a decision support tool, not a replacement for
+agronomists, and is designed to be deployed in field environments. ",
+    "acceptance_criteria": [
+      {
+        "id": "9c052a53-3d7b-444c-b857-43388b661d94",
+        "description": "High level of accuracy with low false positives and
+false negatives"
+      },
+      {
+        "id": "8f82c5c5-f3d9-42d5-a008-a21497a5c24d",
+        "description": "Robustness to environmental variation and crop
+differences"
+      },
+      {
+        "id": "a8133f6f-e5e7-4165-829c-c8c24e2e5645",
+        "description": "Ease of use and integrability into existing workflows"
+      }
+    ],
+    "user_stories": [
+      {
+        "id": "f10c359e-7f5c-4049-9c1e-0f1f548f3931",
+        "title": "API Documentation and Testing",
+        "description": "Create API documentation and unit tests to verify
+functionality and quality",
+        "acceptance_criteria": [
+          {
+            "id": "291608f7-a465-461e-b793-66d93c85375a",
+            "description": "API endpoints can be reached and respond with
+documentation"
+          },
+          {
+            "id": "2babdk8b-bbal software-defined-workflow",
+            "description": "Unit tests verify functionality and error handling"
+ NCI."
+
+user stories:
+1.x.
+
+2. User stories:
+3. User stories
+3. User stories:established:detailed requirementso:polished withcri can be used fortesting, which: stories, which requires.User stories.
+3.priority,e di:10 anduserb,abplaces, output,e,2B,3 stories,10, including requests.
+or5, including user stories that:ory-specific,stories forest andest,3,2. Stories,3
+2,3,1,4 and3) and the following.
+3,3,5 and a,0.
+the database, three orv\.
+3FPTEARPDURP andcard,ring with the500Pring, the and3DPUNERINEDPERESMATEPORTPURPERPEARPride or the productfeedembpond and the description,cles.0PREPActions,20FREDERS or leasts andenders

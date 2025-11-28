@@ -1,0 +1,85 @@
+1. INTRODUCTION
+Retail organizations require accurate demand forecasting and real time insights to
+optimize inventory, reduce stockouts, and improve revenue outcomes. Traditional
+reporting workflows rely on delayed batch processes and static spreadsheets,
+resulting in slow decision cycles. SalesPulse is a data driven forecasting and
+analytics platform developed over a 3 week sprint cycle to provide automated
+insights, interactive dashboards, and short term sales predictions.
+2. PROJECT TIMELINE AND PHASES
+2.1 Week 1: Data Exploration and Pipeline Setup
+Activities: Collected historical retail sales dataset with multiple store and product
+attributes. Performed exploratory data analysis including trend decomposition and
+seasonal pattern identification. Built preprocessing pipeline for cleaning,
+aggregation, outlier removal, and feature extraction. Evaluated baseline statistical
+forecasting approaches.
+2.2 Week 2: Model Development and Evaluation
+Activities: Implemented ARIMA and Prophet models for short term forecasting.
+Compared performance using mean absolute percentage error and root mean
+squared error. Performed hyperparameter tuning and rolling window validation.
+Generated forward looking forecast outputs for dashboard integration.
+2.3 Week 3: Dashboard Integration and Testing
+Activities: Developed Power BI dashboard with interactive filters and visualizations.
+Connected processed dataset to dashboard refresh pipeline. Added visual
+components including forecast overlays and store level comparison. Conducted
+functional, performance, and user acceptance testing.
+
+SalesPulse - Retail Forecasting and Business Insights Platform
+Page 3
+3. DATASET DETAILS
+The dataset includes: Daily sales records across multiple retail stores. Product
+identifiers, categories, and promotional markers. Attributes such as price, quantity,
+and regional segmentation. Date range covering multiple seasonal cycles.
+3.1 Data Challenges
+Challenges identified: Missing entries during holidays. Large spikes during
+promotional events. Non uniform distribution across stores.
+4. MODELING APPROACH
+4.1 Model Selection
+Approaches evaluated: Naive baseline model. ARIMA for short term trend
+forecasting. Prophet for seasonality heavy patterns. Random forest regression for
+feature based prediction.
+4.2 Final Model Justification
+Prophet selected for: Automatic handling of yearly and weekly seasonality. Fast
+training suitable for periodic updates. Robustness against irregular gaps.
+5. EVALUATION AND RESULTS
+Performance achieved: Mean absolute percentage error: 5.8 percent. Root mean
+squared error: 12.4. Rolling forecast stability maintained across validation
+windows. Insights revealed seasonal peak months and declining product
+categories.
+
+SalesPulse - Retail Forecasting and Business Insights Platform
+Page 4
+6. DASHBOARD DEVELOPMENT
+6.1 Power BI Components
+Dashboard includes: Store wise trend graphs. Forecast versus actual comparison
+chart. Top performing product matrix. Dynamic slicers for date, region, and product
+category.
+6.2 Refresh and Data Flow
+Process: Preprocessing pipeline outputs final dataset. Power BI refresh configured
+on scheduled interval. Updated forecasts pushed to dashboard for continuous
+visibility.
+7. IMPLEMENTATION AND TESTING
+7.1 Functional Testing
+Validated: Data integrity and preprocessing consistency. Model output correctness.
+Dashboard filter behavior and refresh reliability.
+7.2 Performance Testing
+Measured: Model training time under 3 minutes. Dashboard refresh latency below
+10 seconds. Memory usage during preprocessing.
+8. LIMITATIONS
+Limitations identified: No real time data streaming in current version. Forecast
+accuracy declines beyond 30 day horizon. Model does not yet factor external
+variables such as weather or marketing campaigns.
+
+SalesPulse - Retail Forecasting and Business Insights Platform
+Page 5
+9. FUTURE DEVELOPMENT PLAN
+Planned enhancements: Integration with live POS streaming systems. LSTM
+based neural forecasting. Anomaly detection pipeline. Deployment using FastAPI
+and containerization. Role based access controls for dashboard users.
+10. CONCLUSION
+SalesPulse demonstrates a complete 3 week development cycle including data
+exploration, model experimentation, dashboard integration, and evaluation. The
+platform provides actionable insights for retail planning and forms a strong
+foundation for future expansion into real time forecasting and advanced analytics.
+11. REFERENCES
+[1] Prophet Forecasting Framework Documentation. [2] Retail Time Series
+Analysis Literature. [3] Power BI Official Documentation.

@@ -1,0 +1,110 @@
+1. INTRODUCTION
+The demand for online food ordering has rapidly increased due to changing consumer preferences,
+time constraints, and the convenience of home delivery. Traditional dine-in and phone-based
+ordering methods are limited by communication gaps, long wait times, and lack of transparency in
+order tracking. Customers expect a seamless digital experience that allows them to browse menus,
+customize orders, and receive timely delivery updates.
+DineEasy is a web-based food ordering system designed to connect customers with restaurants
+through an intuitive online platform. The application enables users to browse menus, place orders,
+and track delivery status while providing restaurant owners with tools to manage orders and menu
+items effectively. The system aims to enhance ordering efficiency and improve customer
+satisfaction through automated and streamlined workflows.
+2. PROBLEM STATEMENT
+Many restaurants rely on manual or phone-based ordering processes, which often lead to
+miscommunication, delayed preparation, and order inaccuracies. Customers have limited visibility
+into menu availability and order status, resulting in dissatisfaction and operational inefficiencies.
+There is a need for a centralized digital platform that reduces friction between users and restaurants
+while improving order management and tracking.
+3. PROJECT OBJECTIVES
+The primary objectives of DineEasy are:
+- To allow customers to browse restaurant menus and place online orders.
+- To enable real-time order status tracking and notifications.
+- To provide restaurants with tools to manage incoming orders efficiently.
+- To minimize communication errors and improve service quality.
+Additional objectives include:
+- Support for customized food selections and add-ons.
+- Maintaining digital order history for user reference.
+4. SYSTEM SCOPE
+
+In-scope features:
+- Customer registration and login
+- Menu browsing and item selection
+- Online order placement
+- Order tracking and status updates
+- Restaurant dashboard for order management
+Out-of-scope for current version:
+- Online payment gateway integration
+- Delivery partner tracking system
+- Mobile app development
+5. REQUIREMENTS
+5.1 Functional Requirements
+- User Registration and Login: Customers must authenticate before placing orders.
+- Menu Browsing: Users can view available dishes with prices and descriptions.
+- Cart Management: Users can add, edit, or remove items before checkout.
+- Order Placement: System confirms and stores the order in the backend.
+- Order Tracking: Users can view real-time order status updates.
+- Restaurant Dashboard: Restaurants can accept, prepare, or mark orders as completed.
+5.2 Non-Functional Requirements
+- Performance: Menu and order updates must be processed within two seconds.
+- Reliability: System should prevent duplicate orders and data loss.
+- Security: User data and login credentials must be encrypted.
+- Scalability: Capable of supporting multiple restaurants and high traffic.
+- Usability: Interface should be easy to navigate on desktop and mobile devices.
+- Maintainability: Modular design to support future features.
+6. SYSTEM DESIGN AND METHODOLOGY
+6.1 System Overview
+DineEasy follows a client–server architecture, where the frontend handles menu display and
+ordering interactions while the backend processes order data and restaurant updates. A centralized
+database stores restaurant profiles, menu items, user accounts, and order history. The system uses
+request validation to ensure accurate and conflict-free order processing.
+6.2 Module Descriptions
+- Authentication Module: Handles secure login and registration.
+- Menu Management Module: Allows restaurants to update menu items and availability.
+
+- Cart and Order Module: Manages user selections and final order submission.
+- Order Tracking Module: Displays real-time status updates for customers.
+- Restaurant Dashboard: Enables restaurants to manage order progress and completion.
+6.3 Data Flow Description
+1. User signs in and browses restaurant menu.
+2. Selected items are added to the cart.
+3. Order is confirmed and sent to backend.
+4. Restaurant receives order notification and updates status.
+5. User tracks progress until completion.
+6.4 User Interface Plan
+- Homepage with restaurant categories
+- Menu page with item descriptions and add-to-cart buttons
+- Cart summary page with pricing breakdown
+- Order tracking page with progress indicators
+- Responsive layout for mobile access
+6.5 Technology Stack
+Frontend: HTML, CSS, JavaScript, Bootstrap or React
+Backend: Node.js or Python Flask
+Database: MySQL or MongoDB
+Authentication: JWT-based access or secure sessions
+Deployment: Local hosting for prototype; cloud-ready structure for scaling
+7. IMPLEMENTATION STRATEGY
+7.1 Development Timeline
+Week 1: Requirement gathering and UI wireframes
+Week 2: Authentication and database setup
+Week 3: Menu and cart functionality
+Week 4: Order processing and status tracking
+Week 5: Restaurant dashboard, testing, and documentation
+7.2 Testing Strategy
+- Unit testing for cart and order validation
+- Integration testing between user and restaurant modules
+- UI testing for responsive design
+- Error-handling tests for incomplete or duplicate orders
+
+8. EXPECTED OUTCOMES
+DineEasy is expected to simplify food ordering by offering customers a convenient online
+alternative to traditional ordering methods. Restaurants will benefit from organized order
+management and reduced communication errors. The platform will also establish a foundation for
+future enhancements such as digital payments and delivery tracking.
+9. CONCLUSION
+DineEasy demonstrates the advantages of web-based food ordering by providing structured
+ordering workflows, menu visibility, and real-time updates. By minimizing manual effort and
+improving service quality, the system enhances customer experience and restaurant efficiency.
+10. RELATED WORK
+Existing platforms like Uber Eats, DoorDash, and Swiggy support large-scale food delivery with
+extensive features. DineEasy focuses on delivering a simplified, academic-level implementation
+suitable for prototype development and small restaurant usage.

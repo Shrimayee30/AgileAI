@@ -1,0 +1,75 @@
+1. INTRODUCTION
+Organizations increasingly depend on real time insights from social media,
+customer feedback, and live communication channels. Traditional batch
+processing pipelines fail to capture rapid sentiment shifts that influence business
+decisions. SentimentFlow is a streaming based sentiment analysis system capable
+of processing continuous text input and generating real time predictions using a
+fine tuned language model. The project demonstrates the complete workflow from
+model development to production deployment for live inference.
+2. LITERATURE REVIEW
+Existing research shows strong performance of transformer based models such as
+BERT and DistilBERT for sentiment classification tasks. Most academic studies
+evaluate models using offline static datasets like the IMDB and Twitter Sentiment
+datasets. However, deployment in real environments requires low latency
+inference, streaming input handling, and scalable serving infrastructure.
+SentimentFlow bridges this gap by integrating a full deployment stack with
+continuous processing capabilities.
+3. DATASET AND PREPROCESSING
+The project uses a combination of IMDB sentiment dataset and Twitter Sentiment
+data. 3.1 Data Source IMDB Movie Reviews dataset from Kaggle Twitter US Airline
+Sentiment dataset 3.2 Preprocessing Steps - Text cleaning including lowercasing,
+punctuation removal, and URL stripping - Tokenization using BERT tokenizer -
+Padding and truncation to fixed sequence length of 128 - Splitting into train,
+validation, and test sets using 70, 15, 15 ratio 3.3 Challenges - Presence of
+sarcasm and informal language - Imbalanced class distribution in social media text
+4. MODEL ARCHITECTURE
+A fine tuned DistilBERT model is used for sentiment classification. Main
+components: - Transformer encoder layers pretrained on masked language
+modeling - Classification head with fully connected layer - Softmax activation over
+
+SentimentFlow - Real Time Sentiment Analysis System
+Page 3
+three classes: positive, negative, neutral Hyperparameters: - Optimizer: AdamW -
+Learning rate: 2e minus 5 - Batch size: 16 - Epochs: 3 - Gradient clipping to
+prevent exploding gradients
+5. TRAINING AND EVALUATION
+Training is performed using PyTorch and Hugging Face Transformers.
+Performance on test data: - Accuracy: 92.6 percent - Precision: 92.1 percent -
+Recall: 91.8 percent - F1 score: 91.9 percent Misclassifications primarily occur in
+neutral versus mildly negative cases.
+6. STREAMING AND DEPLOYMENT PIPELINE
+SentimentFlow is designed for continuous ingestion and live inference. 6.1
+Streaming Input - Kafka topic receives incoming text events - Consumer service
+preprocesses and queues inference requests 6.2 Model Serving - FastAPI service
+exposes a POST predict endpoint - Uvicorn handles asynchronous request
+processing 6.3 Containerization - Dockerfile built using Python slim base image -
+Multi stage build reduces package load - Container pushed to registry for
+deployment 6.4 CI and CD - GitHub Actions performs automated linting and testing
+- Container published to AWS ECR - Deployment triggered using AWS ECS or
+Kubernetes cluster 6.5 Monitoring and Logging - Prometheus tracks request count,
+response times, and failures - Grafana dashboards show live sentiment distribution
+and throughput 6.6 Scaling Strategy - Horizontal scaling using Kubernetes HPA -
+Auto scaling based on CPU and request rate thresholds
+7. RISK ANALYSIS AND ETHICAL CONSIDERATIONS
+Key risks include sentiment misclassification affecting automated decisions, bias
+toward specific language samples, and misuse for surveillance. To address these
+concerns, SentimentFlow is intended as an assistive tool, and model limitations
+must be communicated clearly.
+8. LIMITATIONS AND FUTURE WORK
+
+SentimentFlow - Real Time Sentiment Analysis System
+Page 4
+Limitations: - Accuracy reduces for multilingual and code mixed input -
+Dependence on pretrained English model Future improvements: - Support for
+multilingual transformers - Real time drift detection and automated retraining -
+Integration with social media firehose streams - Sentiment trend forecasting using
+time series models
+9. CONCLUSION
+SentimentFlow demonstrates an end to end real time sentiment analysis pipeline
+combining transformer based modeling, streaming ingestion, and scalable
+deployment infrastructure. It highlights how modern NLP systems can be applied in
+live environments beyond experimental offline evaluation.
+10. REFERENCES
+[1] Devlin et al., BERT Pre Training of Deep Bidirectional Transformers, 2018. [2]
+IMDB Sentiment Dataset, Kaggle. [3] Twitter US Airline Sentiment Dataset,
+Kaggle. [4] Wolf et al., Hugging Face Transformers Library, 2019.
